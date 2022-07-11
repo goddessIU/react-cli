@@ -19,23 +19,23 @@ module.exports = merge(common, {
     //       },
     //     ],
     //   },
-    //   optimization: {
-    //     minimizer: [
-    //         // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
-    //         // `...`,
-    //         new CssMinimizerPlugin(),
-    //       ],
-    //     moduleIds: 'deterministic',
-    //     runtimeChunk: 'single',
-    //     splitChunks: {
-    //         cacheGroups: {
-    //             vendor: {
-    //                 test: /[\\/]node_modules[\\/]/,
-    //                 name: 'vendors',
-    //                 chunks: 'all'
-    //             }
-    //         }
-    //     },
-    //     usedExports: true
-    // }
+      optimization: {
+        // minimizer: [
+        //     // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
+        //     // `...`,
+        //     new CssMinimizerPlugin(),
+        //   ],
+        moduleIds: 'deterministic',
+        runtimeChunk: 'single',
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            }
+        },
+        usedExports: true
+    }
 })

@@ -38,5 +38,6 @@ module.exports = {
       ],
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx']
-    }
+    },
+    stats: 'errors-only'
 }
