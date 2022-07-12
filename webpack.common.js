@@ -1,5 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 
 module.exports = {
     entry: './index.tsx',
@@ -22,7 +24,7 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader']
+                use: [MiniCssExtractPlugin.loader, 'css-loader']
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -30,12 +32,18 @@ module.exports = {
             }
         ]
     },
+    optimization: {
+        minimizer: [
+            new CssMinimizerPlugin(),
+        ],
+    },
     plugins: [
         new HtmlWebpackPlugin({
-          title: 'Output Management',
-          template: './index.html'
+            title: 'Output Management',
+            template: './index.html'
         }),
-      ],
+        new MiniCssExtractPlugin()
+    ],
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx']
     },
